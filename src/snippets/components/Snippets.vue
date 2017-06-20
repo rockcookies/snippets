@@ -184,7 +184,7 @@ export default {
 				return;
 			}
 
-			axios.get(`/static/snippets${url}`).then(resp => {
+			axios.get(`./static/snippets${url}`).then(resp => {
 				this.activeItemVisible = true;
 
 				snippetsCache[url] = resp.data;
