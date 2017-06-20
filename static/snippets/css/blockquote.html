@@ -1,0 +1,43 @@
+<p><strong>演示：</strong></p>
+<blockquote class="example-blockquote"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></blockquote>
+<style>
+.example-blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 15px 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  color: #555;
+  line-height: 24px;
+}
+.example-blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+.example-blockquote p {
+  display: inline;
+}
+</style>
+<pre><code class="language-css"><span class="hljs-selector-tag">blockquote</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#f9f9f9</span>;
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-number">10px</span> solid <span class="hljs-number">#ccc</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">1.5em</span> <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.5em</span> <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">quotes</span>: <span class="hljs-string">"\201C"</span><span class="hljs-string">"\201D"</span><span class="hljs-string">"\2018"</span><span class="hljs-string">"\2019"</span>;
+}
+<span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:before</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ccc</span>;
+  <span class="hljs-attribute">content</span>: open-quote;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">4em</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">0.1em</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">0.25em</span>;
+  <span class="hljs-attribute">vertical-align</span>: -<span class="hljs-number">0.4em</span>;
+}
+<span class="hljs-selector-tag">blockquote</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">display</span>: inline;
+}
+</code></pre>

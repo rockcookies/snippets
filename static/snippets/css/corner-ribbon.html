@@ -1,0 +1,137 @@
+<p>演示：</p>
+<div class="wrapper">
+  <div class="ribbon-wrapper-green"><div class="ribbon-green">ON SALE</div></div>
+</div>​
+<style>
+.wrapper {
+  margin: 50px auto;
+  width: 280px;
+  height: 370px;
+  background: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 8px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 8px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 90;
+}
+
+.ribbon-wrapper-green {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon-green {
+  font: bold 15px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -5px;
+  top: 15px;
+  width: 120px;
+  background-color: #BFDC7A;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
+  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
+  color: #6a6340;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon-green:before, .ribbon-green:after {
+  content: "";
+  border-top:   3px solid #6e8900;
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon-green:before {
+  left: 0;
+}
+.ribbon-green:after {
+  right: 0;
+}​
+</style>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"wrapper"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ribbon-wrapper-green"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ribbon-green"</span>&gt;</span>NEWS<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>​
+</code></pre>
+<pre><code class="language-css"><span class="hljs-selector-class">.wrapper</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">50px</span> auto;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">280px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">370px</span>;
+  <span class="hljs-attribute">background</span>: white;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">-webkit-box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(0,0,0,0.3);
+  <span class="hljs-attribute">-moz-box-shadow</span>:    <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(0,0,0,0.3);
+  <span class="hljs-attribute">box-shadow</span>:         <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(0,0,0,0.3);
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">90</span>;
+}
+
+<span class="hljs-selector-class">.ribbon-wrapper-green</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">85px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">88px</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: -<span class="hljs-number">3px</span>;
+  <span class="hljs-attribute">right</span>: -<span class="hljs-number">3px</span>;
+}
+
+<span class="hljs-selector-class">.ribbon-green</span> {
+  <span class="hljs-attribute">font</span>: bold <span class="hljs-number">15px</span> Sans-Serif;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-built_in">rgba</span>(255,255,255,0.5) <span class="hljs-number">0px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0px</span>;
+  <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">rotate</span>(45deg);
+  <span class="hljs-attribute">-moz-transform</span>:    <span class="hljs-built_in">rotate</span>(45deg);
+  <span class="hljs-attribute">-ms-transform</span>:     <span class="hljs-built_in">rotate</span>(45deg);
+  <span class="hljs-attribute">-o-transform</span>:      <span class="hljs-built_in">rotate</span>(45deg);
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: -<span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">15px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">120px</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#BFDC7A</span>;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-webkit-gradient</span>(linear, left top, left bottom, from(#BFDC7A), <span class="hljs-built_in">to</span>(#8EBF45));
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-webkit-linear-gradient</span>(top, #BFDC7A, #8EBF45);
+  <span class="hljs-attribute">background-image</span>:    <span class="hljs-built_in">-moz-linear-gradient</span>(top, #BFDC7A, #8EBF45);
+  <span class="hljs-attribute">background-image</span>:     <span class="hljs-built_in">-ms-linear-gradient</span>(top, #BFDC7A, #8EBF45);
+  <span class="hljs-attribute">background-image</span>:      <span class="hljs-built_in">-o-linear-gradient</span>(top, #BFDC7A, #8EBF45);
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#6a6340</span>;
+  <span class="hljs-attribute">-webkit-box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">3px</span> <span class="hljs-built_in">rgba</span>(0,0,0,0.3);
+  <span class="hljs-attribute">-moz-box-shadow</span>:    <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">3px</span> <span class="hljs-built_in">rgba</span>(0,0,0,0.3);
+  <span class="hljs-attribute">box-shadow</span>:         <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">3px</span> <span class="hljs-built_in">rgba</span>(0,0,0,0.3);
+}
+
+<span class="hljs-selector-class">.ribbon-green</span><span class="hljs-selector-pseudo">:before</span>, <span class="hljs-selector-class">.ribbon-green</span><span class="hljs-selector-pseudo">:after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
+  <span class="hljs-attribute">border-top</span>:   <span class="hljs-number">3px</span> solid <span class="hljs-number">#6e8900</span>;
+  <span class="hljs-attribute">border-left</span>:  <span class="hljs-number">3px</span> solid transparent;
+  <span class="hljs-attribute">border-right</span>: <span class="hljs-number">3px</span> solid transparent;
+  <span class="hljs-attribute">position</span>:absolute;
+  <span class="hljs-attribute">bottom</span>: -<span class="hljs-number">3px</span>;
+}
+
+<span class="hljs-selector-class">.ribbon-green</span><span class="hljs-selector-pseudo">:before</span> {
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+}
+<span class="hljs-selector-class">.ribbon-green</span><span class="hljs-selector-pseudo">:after</span> {
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+}​
+</code></pre>

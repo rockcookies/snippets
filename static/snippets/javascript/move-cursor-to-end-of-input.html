@@ -1,0 +1,11 @@
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">moveCursorToEnd</span>(<span class="hljs-params">el</span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> el.selectionStart == <span class="hljs-string">"number"</span>) {
+    el.selectionStart = el.selectionEnd = el.value.length;
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> el.createTextRange != <span class="hljs-string">"undefined"</span>) {
+    el.focus();
+    <span class="hljs-keyword">var</span> range = el.createTextRange();
+    range.collapse(<span class="hljs-literal">false</span>);
+    range.select();
+  }
+}
+</code></pre>

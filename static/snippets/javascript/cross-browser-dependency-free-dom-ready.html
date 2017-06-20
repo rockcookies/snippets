@@ -1,0 +1,10 @@
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> DOMReady = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b, c</span>) </span>{
+  b = <span class="hljs-built_in">document</span>
+  c = <span class="hljs-string">'addEventListener'</span>
+  b[c] ? b[c](<span class="hljs-string">'DocumentContentLoaded'</span>, a) : <span class="hljs-built_in">window</span>.attachEvent(<span class="hljs-string">'onload'</span>, a)
+};
+
+DOMReady(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  alert(<span class="hljs-string">'The DOM is Ready!'</span>);
+});
+</code></pre>

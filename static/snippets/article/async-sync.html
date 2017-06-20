@@ -1,0 +1,11 @@
+<p><strong>同步/异步（synchronization/asynchronization）</strong></p>
+<ul>
+<li>同步，就是在产生一个<strong>调用</strong>时，在没有得到结果之前，该<strong>调用</strong>就不会返回，一旦<strong>调用</strong>返回，就得到返回值了，是<strong>调用者</strong>主动等待这个<strong>调用</strong>的结果。</li>
+<li>异步，则是在<strong>调用</strong>发出后，这个<strong>调用</strong>就直接返回了，所以没有返回结果。之后，<strong>被调用者</strong>通过状态、通知等来通知<strong>调用者</strong>，或者通过回调函数处理这个<strong>调用</strong>。</li>
+</ul>
+<p><strong>阻塞/非阻塞（blocking/non-blocking）</strong></p>
+<ul>
+<li>阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。</li>
+<li>非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</li>
+</ul>
+<p>虽然，看起来同步/异步和阻塞/非阻塞看起来有些相似，但是前者关注的是一种<strong>消息通知机制</strong>，后者关注的是<strong>程序在等待调用结果（消息、返回值）时的状态</strong>，所以两者没有必然联系。</p>

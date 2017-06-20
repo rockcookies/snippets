@@ -1,0 +1,22 @@
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- first try HTML5 playback: if serving as XML, expand `controls` to `controls="controls"` and autoplay likewise --&gt;</span>
+<span class="hljs-comment">&lt;!-- warning: playback does not work on iOS3 if you include the poster attribute! fixed in iOS4.0 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"640"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"360"</span> <span class="hljs-attr">controls</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- MP4 must be first for iPad! --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"__VIDEO__.MP4"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/mp4"</span> /&gt;</span><span class="hljs-comment">&lt;!-- Safari / iOS video    --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"__VIDEO__.OGV"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/ogg"</span> /&gt;</span><span class="hljs-comment">&lt;!-- Firefox / Opera / Chrome10 --&gt;</span>
+  <span class="hljs-comment">&lt;!-- fallback to Flash: --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">object</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"640"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"360"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"application/x-shockwave-flash"</span> <span class="hljs-attr">data</span>=<span class="hljs-string">"__FLASH__.SWF"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Firefox uses the `data` attribute above, IE/Safari uses the param below --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"movie"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"__FLASH__.SWF"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"flashvars"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"controlbar=over&amp;amp;image=__POSTER__.JPG&amp;amp;file=__VIDEO__.MP4"</span> /&gt;</span>
+    <span class="hljs-comment">&lt;!-- fallback image. note the title field below, put the title of the video there --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"__VIDEO__.JPG"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"640"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"360"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"__TITLE__"</span>
+         <span class="hljs-attr">title</span>=<span class="hljs-string">"No video playback capabilities, please download the video below"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">object</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- you *must* offer a download link as they may be able to play the file locally. customise this bit all you want --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Download Video:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+  Closed Format:  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"__VIDEO__.MP4"</span>&gt;</span>"MP4"<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  Open Format:  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"__VIDEO__.OGV"</span>&gt;</span>"Ogg"<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>

@@ -1,0 +1,117 @@
+<p><strong>演示：</strong></p>
+<div class="loader">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<style>
+.loader {
+  text-align: center;
+  height: 150px;
+}
+.loader span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  margin: 50px auto;
+  background: black;
+  border-radius: 50px;
+  -webkit-animation: loader 0.9s infinite alternate;
+  -moz-animation: loader 0.9s infinite alternate;
+}
+.loader span:nth-of-type(2) {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+}
+.loader span:nth-of-type(3) {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+}
+@-webkit-keyframes loader {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 0.9;
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    width: 24px;
+    height: 24px;
+    opacity: 0.1;
+    -webkit-transform: translateY(-21px);
+  }
+}
+@-moz-keyframes loader {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 0.9;
+    -moz-transform: translateY(0);
+  }
+  100% {
+    width: 24px;
+    height: 24px;
+    opacity: 0.1;
+    -moz-transform: translateY(-21px);
+  }
+}
+</style>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"loader"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<pre><code class="language-css"><span class="hljs-selector-class">.loader</span> {
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+}
+<span class="hljs-selector-class">.loader</span> <span class="hljs-selector-tag">span</span> {
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">vertical-align</span>: middle;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">50px</span> auto;
+  <span class="hljs-attribute">background</span>: black;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50px</span>;
+  <span class="hljs-attribute">-webkit-animation</span>: loader <span class="hljs-number">0.9s</span> infinite alternate;
+  <span class="hljs-attribute">-moz-animation</span>: loader <span class="hljs-number">0.9s</span> infinite alternate;
+}
+<span class="hljs-selector-class">.loader</span> <span class="hljs-selector-tag">span</span><span class="hljs-selector-pseudo">:nth-of-type(2)</span> {
+  <span class="hljs-attribute">-webkit-animation-delay</span>: <span class="hljs-number">0.3s</span>;
+  <span class="hljs-attribute">-moz-animation-delay</span>: <span class="hljs-number">0.3s</span>;
+}
+<span class="hljs-selector-class">.loader</span> <span class="hljs-selector-tag">span</span><span class="hljs-selector-pseudo">:nth-of-type(3)</span> {
+  <span class="hljs-attribute">-webkit-animation-delay</span>: <span class="hljs-number">0.6s</span>;
+  <span class="hljs-attribute">-moz-animation-delay</span>: <span class="hljs-number">0.6s</span>;
+}
+@-<span class="hljs-keyword">webkit</span>-<span class="hljs-keyword">keyframes</span> loader {
+  0% {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.9</span>;
+    <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translateY</span>(0);
+  }
+  100% {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.1</span>;
+    <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">translateY</span>(-21px);
+  }
+}
+@-<span class="hljs-keyword">moz</span>-<span class="hljs-keyword">keyframes</span> loader {
+  0% {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.9</span>;
+    <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">translateY</span>(0);
+  }
+  100% {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.1</span>;
+    <span class="hljs-attribute">-moz-transform</span>: <span class="hljs-built_in">translateY</span>(-21px);
+  }
+}
+</code></pre>

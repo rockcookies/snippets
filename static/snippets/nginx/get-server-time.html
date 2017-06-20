@@ -1,0 +1,23 @@
+<pre><code class="language-bash">server {
+  listen 80;
+  server_name hqyrock.com
+
+  default_type: <span class="hljs-string">"text/html"</span>;
+  error_page default;
+  charset    off;
+  gzip       off;
+  beacon     off;
+
+  location = /gettime {
+    <span class="hljs-built_in">set</span> <span class="hljs-variable">$uri_param_cb</span> <span class="hljs-string">"callback"</span>;
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$arg_callback</span> ~ <span class="hljs-string">"(^[^/&lt;&gt;]+$)"</span> ) {<span class="hljs-built_in">set</span> <span class="hljs-variable">$uri_param_cb</span> <span class="hljs-variable">$1</span>; }
+    <span class="hljs-built_in">return</span> 200 <span class="hljs-string">"<span class="hljs-variable">$uri_param_cb</span>({\"time\":\"<span class="hljs-variable">$unix_time</span>\"})"</span>;
+  }
+}
+</code></pre>
+<p>使用方式：</p>
+<pre><code class="language-json">//GET http://server_name/gettime
+{
+   "time": "1444284923"
+}
+</code></pre>

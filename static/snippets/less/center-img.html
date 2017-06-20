@@ -1,0 +1,50 @@
+<pre><code class="language-less"><span class="hljs-comment">/**
+ * 图片的垂直居中，注意容器不能设置float，会破坏display的效果，有需要建议在外层增加一层div包裹
+ *
+ * 正常使用，将该方法设置给img的父元素即可:
+ *    div.pic-wrapper
+ *      img
+ * 若元素需要float:
+ *    div.float
+ *      div.pic-wrapper
+ *        img
+ * @param width
+ * @param height
+ */</span>
+<span class="hljs-selector-class">.image-middle</span>(<span class="hljs-variable">@width</span>, <span class="hljs-variable">@height</span>) <span class="hljs-keyword">when</span>(ispixel(<span class="hljs-variable">@height</span>)) {
+
+  <span class="hljs-comment">// 非IE的主流浏览器识别的垂直居中的方法</span>
+  <span class="hljs-attribute">display</span>: table-cell;
+  <span class="hljs-attribute">vertical-align</span>:middle;
+  <span class="hljs-attribute">text-align</span>:center;
+  <span class="hljs-attribute">height</span>: <span class="hljs-variable">@height</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-variable">@width</span>;
+
+  <span class="hljs-comment">// 针对IE678最垂直居中</span>
+  <span class="hljs-comment">// 针对IE的Hack</span>
+  <span class="hljs-attribute">display</span>: <span class="hljs-string">~'block\0'</span>;<span class="hljs-comment">/* ie 8/9*/</span>
+  <span class="hljs-attribute">display</span>: <span class="hljs-string">~'table-cell\9\0'</span>;<span class="hljs-comment">/* ie 9*/</span>
+  *<span class="hljs-attribute">display</span>: block;
+
+  *<span class="hljs-attribute">font-size</span>: <span class="hljs-variable">@height</span> * <span class="hljs-number">0.873</span>;
+
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-string">~'@{height}\0'</span>;<span class="hljs-comment">/* ie 8/9*/</span>
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-string">~'inherit\9\0'</span>;<span class="hljs-comment">/* ie 9*/</span>
+  *<span class="hljs-attribute">line-height</span>: <span class="hljs-variable">@height</span>;
+  <span class="hljs-comment">// 防止非utf-8引起的hack失效问题，如gbk编码</span>
+  *<span class="hljs-attribute">font-family</span>:Arial;
+
+  <span class="hljs-selector-tag">img</span> {
+    <span class="hljs-attribute">max-height</span>: <span class="hljs-variable">@height</span>;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-variable">@width</span>;
+    <span class="hljs-attribute">vertical-align</span>: middle;
+  }
+}
+
+<span class="hljs-comment">/**
+ * 兼容一个参数的写法，长宽相等
+ */</span>
+<span class="hljs-selector-class">.image-middle</span>(<span class="hljs-variable">@square</span>:<span class="hljs-number">60px</span>){
+  <span class="hljs-selector-class">.image-middle</span>(<span class="hljs-variable">@square</span>, <span class="hljs-variable">@square</span>);
+}
+</code></pre>

@@ -1,0 +1,35 @@
+---
+title: iconfont mixin
+---
+
+```less
+.iconfont-face(@font-family, @url, @version) {
+  @font-face {
+    font-family: '@{font-family}';
+    src: url('@{url}.eot?v=@{timestamp}');
+    src: url('@{url}.eot?#iefix&v=@{timestamp}') format('embedded-opentype'),
+    url('@{url}.woff?v=@{timestamp}') format('woff'),
+    url('@{url}.ttf?v=@{timestamp}') format('truetype'),
+    url('@{url}.svg?v=@{timestamp}#iconfont') format('svg');
+  }
+}
+
+.iconfont-mixin(@font-family) {
+  /* autoprefixer: off */
+  display: inline-block;
+  font-style: normal;
+  vertical-align: baseline;
+  text-align: center;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: .2px;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: ~"@{font-family}" !important;
+
+  &:before {
+    display: block;
+  }
+}
+```

@@ -1,0 +1,17 @@
+<pre><code class="language-css"><span class="hljs-selector-class">.transparent_class</span> {
+  <span class="hljs-comment">/* IE 8 */</span>
+  <span class="hljs-attribute">-ms-filter</span>: <span class="hljs-string">"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"</span>;
+
+  <span class="hljs-comment">/* IE 5-7 */</span>
+  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">alpha</span>(opacity=50);
+
+  <span class="hljs-comment">/* Netscape */</span>
+  <span class="hljs-attribute">-moz-opacity</span>: <span class="hljs-number">0.5</span>;
+
+  <span class="hljs-comment">/* Safari 1.x */</span>
+  <span class="hljs-attribute">-khtml-opacity</span>: <span class="hljs-number">0.5</span>;
+
+  <span class="hljs-comment">/* Good browsers */</span>
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;
+}
+</code></pre>

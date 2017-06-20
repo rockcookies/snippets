@@ -1,0 +1,21 @@
+<pre><code class="language-css"><span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span> {
+  <span class="hljs-attribute">visibility</span>: hidden;
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">" "</span>;
+  <span class="hljs-attribute">clear</span>: both;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+}
+* <span class="hljs-selector-tag">html</span> <span class="hljs-selector-class">.clearfix</span>             { <span class="hljs-attribute">zoom</span>: <span class="hljs-number">1</span>; } <span class="hljs-comment">/* IE6 */</span>
+*<span class="hljs-selector-pseudo">:first-child+html</span> <span class="hljs-selector-class">.clearfix</span> { <span class="hljs-attribute">zoom</span>: <span class="hljs-number">1</span>; } <span class="hljs-comment">/* IE7 */</span>
+</code></pre>
+<pre><code class="language-css">.clearfix {
+  *zoom:1;
+}
+
+.clearfix:after{
+  display:table;
+  content:'';
+  clear:both;
+}
+</code></pre>

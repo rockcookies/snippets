@@ -1,0 +1,10 @@
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"upload.php"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">'uploads[]'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">multiple</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Send"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>后端 php 处理，可以这样：</p>
+<pre><code class="language-php"><span class="hljs-keyword">foreach</span> ($_FILES[<span class="hljs-string">'uploads'</span>][<span class="hljs-string">'name'</span>] <span class="hljs-keyword">as</span> $filename) {
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;li&gt;'</span> . $filename . <span class="hljs-string">'&lt;/li&gt;'</span>;
+}
+</code></pre>

@@ -1,0 +1,14 @@
+<pre><code class="language-css">@<span class="hljs-keyword">media</span> print {
+  <span class="hljs-selector-tag">body</span> {
+    <span class="hljs-comment">/* IE4-8 and 9 (deprecated). */</span>
+    <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">Gray</span>();
+    <span class="hljs-comment">/* SVG version for IE10, Chrome 17, FF3.5,
+    Safari 5.2 and Opera 11.6 */</span>
+    <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'#grayscale'</span>);
+    <span class="hljs-comment">/* CSS3 filter, at the moment Webkit only. Prefix it for
+    future implementations */</span>
+    <span class="hljs-attribute">-webkit-filter</span>: <span class="hljs-built_in">grayscale</span>(100%);
+    <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">grayscale</span>(100%); <span class="hljs-comment">/* future-proof */</span>
+  }
+}
+</code></pre>

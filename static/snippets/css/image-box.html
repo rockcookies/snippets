@@ -1,0 +1,47 @@
+<p><strong>演示：</strong></p>
+<div style="margin:0 auto;width: 50%;">
+  <div class="img-box">
+    <img src="https://placehold.it/800x600" class="img">
+  </div>
+</div>
+<style>
+.img-box {
+  width: 100%;
+  position: relative;
+}
+
+.img-box:before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 75%;
+}
+
+.img-box > .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+<pre><code class="language-css"><span class="hljs-selector-class">.img-box</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">position</span>: relative;
+}
+
+<span class="hljs-selector-class">.img-box</span><span class="hljs-selector-pseudo">:before</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">75s</span>%;
+}
+
+<span class="hljs-selector-class">.img-box</span> &gt; <span class="hljs-selector-class">.img</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+}
+</code></pre>

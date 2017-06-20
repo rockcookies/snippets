@@ -1,0 +1,46 @@
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasFlash</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">if</span> (navigator.plugins &amp;&amp; navigator.plugins.length &amp;&amp; navigator.plugins[<span class="hljs-string">'Shockwave Flash'</span>]) {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (navigator.mimeTypes &amp;&amp; navigator.mimeTypes.length) {
+    <span class="hljs-keyword">var</span> mimeType = navigator.mimeTypes[<span class="hljs-string">'application/x-shockwave-flash'</span>];
+    <span class="hljs-keyword">return</span> mimeType &amp;&amp; mimeType.enabledPlugin;
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">var</span> ax = <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">'ShockwaveFlash.ShockwaveFlash'</span>);
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">catch</span> (e) {}
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+<pre><code class="language-javascript"><span class="hljs-comment">/**
+ * [isSupportFlash description]
+ * @return {number} [ -1（不支持flash） | flash版本号]
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFlashVersion</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> version = <span class="hljs-number">-1</span>;
+  <span class="hljs-keyword">if</span>( <span class="hljs-built_in">window</span>.ActiveXObject ) {
+    <span class="hljs-keyword">try</span>{
+      <span class="hljs-keyword">var</span> swf = <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">"ShockwaveFlash.ShockwaveFlash"</span>);
+      version = <span class="hljs-built_in">parseInt</span>( swf.GetVariable(<span class="hljs-string">"$version"</span>).split(<span class="hljs-string">" "</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">","</span>)[<span class="hljs-number">0</span>]);
+    }
+    <span class="hljs-keyword">catch</span>(e){}
+  }
+  <span class="hljs-keyword">else</span>{
+    <span class="hljs-keyword">if</span>( navigator.plugins &amp;&amp; navigator.plugins[<span class="hljs-string">"Shockwave Flash"</span>] ) {
+      <span class="hljs-keyword">var</span> arr = navigator.plugins[<span class="hljs-string">'Shockwave Flash'</span>].description.split(<span class="hljs-string">' '</span>);
+      <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+      <span class="hljs-keyword">var</span> length = arr.length;
+      <span class="hljs-keyword">if</span> ( arr ) {
+        <span class="hljs-keyword">for</span> ( ; i &lt; length ; i++) {
+          <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">isNaN</span>( <span class="hljs-built_in">Number</span>(arr[i]) )) {
+            version = <span class="hljs-built_in">Number</span>(arr[i]);
+            <span class="hljs-keyword">break</span>;
+          }
+        }
+      }
+    }
+  }
+  <span class="hljs-keyword">return</span> version;
+}
+</code></pre>

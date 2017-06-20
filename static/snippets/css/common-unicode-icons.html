@@ -1,0 +1,27 @@
+<p><strong>演示：</strong></p>
+<div class="unicode-demo">
+	<p><a href="mailto:hqy321@gmail.com">hqy321@gmail.com</a></p>
+<pre><code>&lt;p class=&quot;phone&quot;&gt;555-555-5555&lt;/p&gt;
+
+&lt;p class=&quot;important&quot;&gt;REMEMBER: drink slushies too fast.&lt;/p&gt;
+
+&lt;blockquote&gt;Designers tend to whisper, ad agencies tend to shout.&lt;/blockquote&gt;
+
+&lt;p class=&quot;alert&quot;&gt;Stranger Danger!&lt;p&gt;
+</code></pre>
+</div>
+<style>
+.unicode-demo a[href^="mailto:"]:before { content: "\2709"; }
+.unicode-demo .phone:before             { content: "\2706"; }
+.unicode-demo .important:before         { content: "\27BD"; }
+.unicode-demo blockquote:before         { content: "\275D"; }
+.unicode-demo blockquote:after          { content: "\275E"; }
+.unicode-demo .alert:before             { content: "\26A0"; }
+</style>
+<pre><code class="language-css"><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[href^="mailto:"]</span><span class="hljs-selector-pseudo">:before</span> { <span class="hljs-attribute">content</span>: <span class="hljs-string">"\2709"</span>; }
+<span class="hljs-selector-class">.phone</span><span class="hljs-selector-pseudo">:before</span>             { <span class="hljs-attribute">content</span>: <span class="hljs-string">"\2706"</span>; }
+<span class="hljs-selector-class">.important</span><span class="hljs-selector-pseudo">:before</span>         { <span class="hljs-attribute">content</span>: <span class="hljs-string">"\27BD"</span>; }
+<span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:before</span>         { <span class="hljs-attribute">content</span>: <span class="hljs-string">"\275D"</span>; }
+<span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:after</span>          { <span class="hljs-attribute">content</span>: <span class="hljs-string">"\275E"</span>; }
+<span class="hljs-selector-class">.alert</span><span class="hljs-selector-pseudo">:before</span>             { <span class="hljs-attribute">content</span>: <span class="hljs-string">"\26A0"</span>; }
+</code></pre>

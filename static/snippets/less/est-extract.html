@@ -1,0 +1,344 @@
+<pre><code class="language-less"><span class="hljs-comment">//</span>
+<span class="hljs-comment">// Clockhand</span>
+<span class="hljs-comment">// -----------------------------------------------------------------------------</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// ### Usage:</span>
+<span class="hljs-comment">// Helpers for writing properties in clockhand manner.</span>
+
+<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@values</span>, <span class="hljs-variable">@prefix</span>: <span class="hljs-string">~""</span>, <span class="hljs-variable">@suffix</span>: <span class="hljs-string">~""</span>, <span class="hljs-variable">@collapse</span>: false) {
+	<span class="hljs-variable">@l:</span> length(<span class="hljs-variable">@values</span>);
+	<span class="hljs-variable">@pre:</span> <span class="hljs-built_in">~`'@{prefix}' ? '@{prefix}-' : ''`</span>;
+	<span class="hljs-variable">@suf:</span> <span class="hljs-built_in">~`'@{suffix}' ? '-@{suffix}' : ''`</span>;
+
+	<span class="hljs-selector-class">.map</span>(<span class="hljs-number">1</span>) {
+		<span class="hljs-variable">@top:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">1</span>);
+		<span class="hljs-variable">@right:</span> <span class="hljs-variable">@top</span>;
+		<span class="hljs-variable">@bottom:</span> <span class="hljs-variable">@top</span>;
+		<span class="hljs-variable">@left:</span> <span class="hljs-variable">@top</span>;
+	}
+	<span class="hljs-selector-class">.map</span>(<span class="hljs-number">2</span>) {
+		<span class="hljs-variable">@top:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">1</span>);
+		<span class="hljs-variable">@right:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">2</span>);
+		<span class="hljs-variable">@bottom:</span> <span class="hljs-variable">@top</span>;
+		<span class="hljs-variable">@left:</span> <span class="hljs-variable">@right</span>;
+	}
+	<span class="hljs-selector-class">.map</span>(<span class="hljs-number">3</span>) {
+		<span class="hljs-variable">@top:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">1</span>);
+		<span class="hljs-variable">@right:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">2</span>);
+		<span class="hljs-variable">@bottom:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">3</span>);
+		<span class="hljs-variable">@left:</span> <span class="hljs-variable">@right</span>;
+	}
+	<span class="hljs-selector-class">.map</span>(<span class="hljs-number">4</span>) {
+		<span class="hljs-variable">@top:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">1</span>);
+		<span class="hljs-variable">@right:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">2</span>);
+		<span class="hljs-variable">@bottom:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">3</span>);
+		<span class="hljs-variable">@left:</span> extract(<span class="hljs-variable">@values</span>, <span class="hljs-number">4</span>);
+	}
+	<span class="hljs-selector-class">.map</span>(<span class="hljs-variable">@l</span>);
+
+	<span class="hljs-selector-class">.reduce</span>() <span class="hljs-keyword">when</span> (<span class="hljs-variable">@collapse</span>) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@top</span> = _) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@right</span> = _)
+	<span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@bottom</span> = _) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@left</span> = _) {
+		<span class="hljs-selector-class">.output</span>() {
+			<span class="hljs-variable">@shorthand:</span> <span class="hljs-variable">@top</span>;
+		}
+		<span class="hljs-selector-class">.output</span>() <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@right</span> = <span class="hljs-variable">@top</span>) {
+			<span class="hljs-variable">@shorthand:</span> <span class="hljs-variable">@top</span> <span class="hljs-variable">@right</span>;
+		}
+		<span class="hljs-selector-class">.output</span>() <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@bottom</span> = <span class="hljs-variable">@top</span>) {
+			<span class="hljs-variable">@shorthand:</span> <span class="hljs-variable">@top</span> <span class="hljs-variable">@right</span> <span class="hljs-variable">@bottom</span>;
+		}
+		<span class="hljs-selector-class">.output</span>() <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@left</span> = <span class="hljs-variable">@right</span>) {
+			<span class="hljs-variable">@shorthand:</span> <span class="hljs-variable">@top</span> <span class="hljs-variable">@right</span> <span class="hljs-variable">@bottom</span> <span class="hljs-variable">@left</span>;
+		}
+		<span class="hljs-selector-class">.output</span>();
+		<span class="hljs-variable">@{prefix}</span><span class="hljs-variable">@{suf}</span>: @<span class="hljs-selector-tag">shorthand</span>;
+	}
+	<span class="hljs-selector-class">.reduce</span>() <span class="hljs-keyword">when</span> (default()) {
+		<span class="hljs-selector-class">.output</span>() <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@top</span> = _) {
+			<span class="hljs-variable">@{pre}</span><span class="hljs-selector-tag">top</span><span class="hljs-variable">@{suf}</span>: @<span class="hljs-selector-tag">top</span>;
+		}
+		<span class="hljs-selector-class">.output</span>() <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@right</span> = _) {
+			<span class="hljs-variable">@{pre}</span><span class="hljs-selector-tag">right</span><span class="hljs-variable">@{suf}</span>: @<span class="hljs-selector-tag">right</span>;
+		}
+		<span class="hljs-selector-class">.output</span>() <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@bottom</span> = _) {
+			<span class="hljs-variable">@{pre}</span><span class="hljs-selector-tag">bottom</span><span class="hljs-variable">@{suf}</span>: @<span class="hljs-selector-tag">bottom</span>;
+		}
+		<span class="hljs-selector-class">.output</span>() <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@left</span> = _) {
+			<span class="hljs-variable">@{pre}</span><span class="hljs-selector-tag">left</span><span class="hljs-variable">@{suf}</span>: @<span class="hljs-selector-tag">left</span>;
+		}
+		<span class="hljs-selector-class">.output</span>();
+	}
+
+	<span class="hljs-selector-class">.reduce</span>();
+}
+
+<span class="hljs-selector-class">.absolute</span>(...) {
+	<span class="hljs-attribute">position</span>: absolute;
+	<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@arguments</span>);
+}
+
+<span class="hljs-selector-class">.fixed</span>(...) {
+	<span class="hljs-attribute">position</span>: fixed;
+	<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@arguments</span>);
+}
+
+<span class="hljs-selector-class">.relative</span>(...) {
+	<span class="hljs-attribute">position</span>: relative;
+	<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@arguments</span>);
+}
+
+<span class="hljs-selector-class">.padding</span>(...) {
+	<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@arguments</span>, padding, <span class="hljs-string">~""</span>, true);
+}
+
+<span class="hljs-selector-class">.margin</span>(...) {
+	<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@arguments</span>, margin, <span class="hljs-string">~""</span>, true);
+}
+
+<span class="hljs-selector-class">.border-color</span>(...) {
+	<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@arguments</span>, border, color, true);
+}
+
+<span class="hljs-selector-class">.border-style</span>(...) {
+	<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@arguments</span>, border, style, true);
+}
+
+<span class="hljs-selector-class">.border-width</span>(...) {
+	<span class="hljs-selector-class">.clockhand</span>(<span class="hljs-variable">@arguments</span>, border, width, true);
+}
+
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Reset</span>
+<span class="hljs-comment">// -----------------------------------------------------------------------------</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// ### Usage:</span>
+<span class="hljs-comment">// 在整站中推荐使用`normalize`来初始化样式，`reset`仅建议在第三方页面局部使用。</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// ### Example:</span>
+<span class="hljs-comment">// .ec-zx-edu {</span>
+<span class="hljs-comment">//     .reset-box-model;</span>
+<span class="hljs-comment">//     ol, ul {</span>
+<span class="hljs-comment">//         .reset-list-style;</span>
+<span class="hljs-comment">//     }</span>
+<span class="hljs-comment">// }</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// ### Reference:</span>
+<span class="hljs-comment">//  * http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/</span>
+<span class="hljs-comment">//  * http://compass-style.org/reference/compass/reset/utilities/</span>
+
+<span class="hljs-selector-class">.global-reset</span>() {
+	<span class="hljs-selector-tag">html</span>, <span class="hljs-selector-tag">body</span>, <span class="hljs-selector-tag">div</span>, <span class="hljs-selector-tag">span</span>, <span class="hljs-selector-tag">applet</span>, <span class="hljs-selector-tag">object</span>, <span class="hljs-selector-tag">iframe</span>,
+	<span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">h2</span>, <span class="hljs-selector-tag">h3</span>, <span class="hljs-selector-tag">h4</span>, <span class="hljs-selector-tag">h5</span>, <span class="hljs-selector-tag">h6</span>, <span class="hljs-selector-tag">p</span>, <span class="hljs-selector-tag">blockquote</span>, <span class="hljs-selector-tag">pre</span>,
+	<span class="hljs-selector-tag">a</span>, <span class="hljs-selector-tag">abbr</span>, <span class="hljs-selector-tag">acronym</span>, <span class="hljs-selector-tag">address</span>, <span class="hljs-selector-tag">big</span>, <span class="hljs-selector-tag">cite</span>, <span class="hljs-selector-tag">code</span>,
+	<span class="hljs-selector-tag">del</span>, <span class="hljs-selector-tag">dfn</span>, <span class="hljs-selector-tag">em</span>, <span class="hljs-selector-tag">img</span>, <span class="hljs-selector-tag">ins</span>, <span class="hljs-selector-tag">kbd</span>, <span class="hljs-selector-tag">q</span>, <span class="hljs-selector-tag">s</span>, <span class="hljs-selector-tag">samp</span>,
+	<span class="hljs-selector-tag">small</span>, <span class="hljs-selector-tag">strike</span>, <span class="hljs-selector-tag">strong</span>, <span class="hljs-selector-tag">sub</span>, <span class="hljs-selector-tag">sup</span>, <span class="hljs-selector-tag">tt</span>, <span class="hljs-selector-tag">var</span>,
+	<span class="hljs-selector-tag">dl</span>, <span class="hljs-selector-tag">dt</span>, <span class="hljs-selector-tag">dd</span>, <span class="hljs-selector-tag">ol</span>, <span class="hljs-selector-tag">ul</span>, <span class="hljs-selector-tag">li</span>,
+	<span class="hljs-selector-tag">fieldset</span>, <span class="hljs-selector-tag">form</span>, <span class="hljs-selector-tag">label</span>, <span class="hljs-selector-tag">legend</span>,
+	<span class="hljs-selector-tag">table</span>, <span class="hljs-selector-tag">caption</span>, <span class="hljs-selector-tag">tbody</span>, <span class="hljs-selector-tag">tfoot</span>, <span class="hljs-selector-tag">thead</span>, <span class="hljs-selector-tag">tr</span>, <span class="hljs-selector-tag">th</span>, <span class="hljs-selector-tag">td</span> {
+		<span class="hljs-selector-class">.reset-box-model</span>();
+		<span class="hljs-selector-class">.reset-focus</span>();
+		<span class="hljs-selector-class">.reset-font</span>();
+	}
+	<span class="hljs-selector-tag">body</span> {
+		<span class="hljs-selector-class">.reset-body</span>();
+	}
+	<span class="hljs-selector-tag">ol</span>, <span class="hljs-selector-tag">ul</span> {
+		<span class="hljs-selector-class">.reset-list-style</span>();
+	}
+	<span class="hljs-selector-tag">table</span> {
+		<span class="hljs-selector-class">.reset-table</span>();
+	}
+	<span class="hljs-selector-tag">caption</span>, <span class="hljs-selector-tag">th</span>, <span class="hljs-selector-tag">td</span> {
+		<span class="hljs-selector-class">.reset-table-cell</span>();
+	}
+	<span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">img</span> {
+		<span class="hljs-attribute">border</span>: none;
+	}
+
+	<span class="hljs-selector-class">.reset-html5</span>();
+}
+
+<span class="hljs-selector-class">.nested-reset</span>() {
+	<span class="hljs-selector-tag">div</span>, <span class="hljs-selector-tag">span</span>, <span class="hljs-selector-tag">object</span>, <span class="hljs-selector-tag">iframe</span>, <span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">h2</span>, <span class="hljs-selector-tag">h3</span>, <span class="hljs-selector-tag">h4</span>, <span class="hljs-selector-tag">h5</span>, <span class="hljs-selector-tag">h6</span>, <span class="hljs-selector-tag">p</span>,
+	<span class="hljs-selector-tag">pre</span>, <span class="hljs-selector-tag">a</span>, <span class="hljs-selector-tag">abbr</span>, <span class="hljs-selector-tag">acronym</span>, <span class="hljs-selector-tag">address</span>, <span class="hljs-selector-tag">code</span>, <span class="hljs-selector-tag">del</span>, <span class="hljs-selector-tag">dfn</span>, <span class="hljs-selector-tag">em</span>, <span class="hljs-selector-tag">img</span>,
+	<span class="hljs-selector-tag">dl</span>, <span class="hljs-selector-tag">dt</span>, <span class="hljs-selector-tag">dd</span>, <span class="hljs-selector-tag">ol</span>, <span class="hljs-selector-tag">ul</span>, <span class="hljs-selector-tag">li</span>, <span class="hljs-selector-tag">fieldset</span>, <span class="hljs-selector-tag">form</span>, <span class="hljs-selector-tag">label</span>,
+	<span class="hljs-selector-tag">legend</span>, <span class="hljs-selector-tag">caption</span>, <span class="hljs-selector-tag">tbody</span>, <span class="hljs-selector-tag">tfoot</span>, <span class="hljs-selector-tag">thead</span>, <span class="hljs-selector-tag">tr</span> {
+		<span class="hljs-selector-class">.reset-box-model</span>();
+		<span class="hljs-selector-class">.reset-focus</span>();
+		<span class="hljs-selector-class">.reset-font</span>();
+	}
+	<span class="hljs-selector-tag">table</span> {
+		<span class="hljs-selector-class">.reset-table</span>();
+	}
+	<span class="hljs-selector-tag">caption</span>, <span class="hljs-selector-tag">th</span>, <span class="hljs-selector-tag">td</span> {
+		<span class="hljs-selector-class">.reset-table-cell</span>();
+	}
+	<span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">img</span> {
+		<span class="hljs-attribute">border</span>: none;
+	}
+}
+
+<span class="hljs-selector-class">.reset-box-model</span>() {
+	<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+	<span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+	<span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.reset-focus</span>() {
+	<span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.reset-font</span>() {
+	<span class="hljs-attribute">font-weight</span>: inherit;
+	<span class="hljs-attribute">font-style</span>: inherit;
+	<span class="hljs-attribute">font-family</span>: inherit;
+	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">100%</span>;
+	<span class="hljs-attribute">vertical-align</span>: baseline;
+}
+
+<span class="hljs-selector-class">.reset-body</span>() {
+	<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.reset-table</span>() {
+	<span class="hljs-attribute">border-collapse</span>: separate;
+	<span class="hljs-attribute">border-spacing</span>: <span class="hljs-number">0</span>;
+	<span class="hljs-attribute">vertical-align</span>: middle;
+}
+
+<span class="hljs-selector-class">.reset-table-cell</span>() {
+	<span class="hljs-attribute">text-align</span>: left;
+	<span class="hljs-attribute">font-weight</span>: normal;
+	<span class="hljs-attribute">vertical-align</span>: middle;
+}
+
+<span class="hljs-selector-class">.reset-list-style</span>() {
+	<span class="hljs-attribute">list-style</span>: none;
+}
+
+<span class="hljs-selector-class">.reset-html5</span>() {
+	<span class="hljs-selector-tag">article</span>, <span class="hljs-selector-tag">aside</span>, <span class="hljs-selector-tag">details</span>, <span class="hljs-selector-tag">figcaption</span>,
+	<span class="hljs-selector-tag">figure</span>, <span class="hljs-selector-tag">footer</span>, <span class="hljs-selector-tag">header</span>, <span class="hljs-selector-tag">hgroup</span>, <span class="hljs-selector-tag">menu</span>, <span class="hljs-selector-tag">nav</span>,
+	<span class="hljs-selector-tag">section</span>, <span class="hljs-selector-tag">summary</span>, <span class="hljs-selector-tag">main</span> {
+		<span class="hljs-attribute">display</span>: block;
+		<span class="hljs-selector-class">.reset-box-model</span>();
+		<span class="hljs-selector-class">.reset-focus</span>();
+		<span class="hljs-selector-class">.reset-font</span>();
+	}
+	<span class="hljs-selector-tag">audio</span>, <span class="hljs-selector-tag">canvas</span>, <span class="hljs-selector-tag">video</span> {
+		<span class="hljs-selector-class">.inline-block</span>();
+	}
+	<span class="hljs-attribute">audio</span>:not([controls]),[hidden] {
+		<span class="hljs-attribute">display</span>: none;
+	}
+}
+
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Typography</span>
+<span class="hljs-comment">// -----------------------------------------------------------------------------</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// ### Usage:</span>
+<span class="hljs-comment">// 提供文本相关的mixin样式。</span>
+
+
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// .ellipsis</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Known issue:</span>
+<span class="hljs-comment">// 指定参数（行数）的功能只支持WebKit。</span>
+
+<span class="hljs-selector-class">.ellipsis</span>(...) {
+	<span class="hljs-attribute">overflow</span>: hidden;
+}
+<span class="hljs-selector-class">.ellipsis</span>() {
+	<span class="hljs-attribute">text-overflow</span>: ellipsis;
+	<span class="hljs-attribute">-o-text-overflow</span>: ellipsis;
+	<span class="hljs-attribute">white-space</span>: nowrap;
+}
+<span class="hljs-selector-class">.ellipsis</span>(<span class="hljs-variable">@line-number</span>) {
+	<span class="hljs-attribute">display</span>: -webkit-box;
+	<span class="hljs-attribute">-webkit-line-clamp</span>: <span class="hljs-variable">@line-number</span>;
+	<span class="hljs-attribute">-webkit-box-orient</span>: vertical;
+}
+
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// force-wrap</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// 阻止长字符串（例如url或无意义连续英文字符）打破布局</span>
+
+<span class="hljs-selector-class">.force-wrap</span>() {
+	<span class="hljs-attribute">white-space</span>: pre;           <span class="hljs-comment">// CSS 2.0</span>
+	<span class="hljs-attribute">white-space</span>: pre-wrap;      <span class="hljs-comment">// CSS 2.1</span>
+	<span class="hljs-attribute">white-space</span>: pre-line;      <span class="hljs-comment">// CSS 3.0</span>
+	<span class="hljs-attribute">white-space</span>: -pre-wrap;     <span class="hljs-comment">// Opera 4-6</span>
+	<span class="hljs-attribute">white-space</span>: -o-pre-wrap;   <span class="hljs-comment">// Opera 7</span>
+	<span class="hljs-attribute">white-space</span>: -moz-pre-wrap; <span class="hljs-comment">// Mozilla</span>
+	<span class="hljs-attribute">white-space</span>: -hp-pre-wrap;  <span class="hljs-comment">// HP Printers</span>
+	<span class="hljs-attribute">word-wrap</span>: break-word;      <span class="hljs-comment">// IE 5+</span>
+}
+
+
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Util</span>
+<span class="hljs-comment">// -----------------------------------------------------------------------------</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// ### Usage:</span>
+<span class="hljs-comment">// Common utilities.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// ### Example:</span>
+<span class="hljs-comment">// .some-floats-inside {</span>
+<span class="hljs-comment">//     .clearfix();</span>
+<span class="hljs-comment">// };</span>
+
+<span class="hljs-comment">// clearfix via http://h5bp.com/q</span>
+<span class="hljs-selector-class">.clearfix</span>() {
+	<span class="hljs-attribute">zoom</span>: <span class="hljs-number">1</span>;
+	<span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:before</span>,
+	<span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:after</span> {
+		<span class="hljs-attribute">content</span>: <span class="hljs-string">" "</span>;
+		<span class="hljs-attribute">display</span>: table;
+	}
+	<span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:after</span> {
+		<span class="hljs-attribute">clear</span>: both;
+		<span class="hljs-attribute">visibility</span>: hidden;
+		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+		<span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+	}
+}
+
+<span class="hljs-comment">// size settings</span>
+<span class="hljs-selector-class">.size</span>(<span class="hljs-variable">@size</span>) {
+	<span class="hljs-attribute">width</span>: <span class="hljs-variable">@size</span>;
+	<span class="hljs-attribute">height</span>: <span class="hljs-variable">@size</span>;
+}
+<span class="hljs-selector-class">.size</span>(<span class="hljs-variable">@wdith</span>, <span class="hljs-variable">@height</span>) {
+	<span class="hljs-attribute">width</span>: <span class="hljs-variable">@wdith</span>;
+	<span class="hljs-attribute">height</span>: <span class="hljs-variable">@height</span>;
+}
+
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// .no-bullet</span>
+<span class="hljs-comment">// .no-bullets</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// "Unstyle" lists, `.no-bullet()` for `&lt;li&gt;`s and `.no-bullets()` for `&lt;ul&gt;` &amp; `&lt;ol&gt;`</span>
+<span class="hljs-comment">// [deprecated]</span>
+
+<span class="hljs-selector-class">.no-bullet</span>() {
+	<span class="hljs-attribute">list-style-image</span>: none;
+	<span class="hljs-attribute">list-style-type</span>: none;
+	<span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.no-bullets</span>() {
+	<span class="hljs-attribute">list-style</span>: none;
+	<span class="hljs-selector-tag">li</span> {
+		<span class="hljs-selector-class">.no-bullet</span>();
+	}
+}
+
+<span class="hljs-selector-class">.inline-block</span>() {
+	<span class="hljs-attribute">display</span>: inline-block;
+	*<span class="hljs-attribute">display</span>: inline;
+	*<span class="hljs-attribute">zoom</span>: <span class="hljs-number">1</span>;
+}
+</code></pre>

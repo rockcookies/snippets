@@ -1,0 +1,8 @@
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">htmlEntities</span>(<span class="hljs-params">str</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">String</span>(str)
+    .replace(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">'&amp;amp;'</span>)
+    .replace(<span class="hljs-regexp">/&lt;/g</span>, <span class="hljs-string">'&amp;lt;'</span>)
+    .replace(<span class="hljs-regexp">/&gt;/g</span>, <span class="hljs-string">'&amp;gt;'</span>)
+    .replace(<span class="hljs-regexp">/"/g</span>, <span class="hljs-string">'&amp;quot;'</span>);
+}
+</code></pre>

@@ -1,0 +1,6 @@
+<p><strong>让placeholder居中的兼容写法：</strong></p>
+<pre><code class="language-css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::input-placeholder</span> { <span class="hljs-attribute">text-align</span>: center }
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::-ms-input-placeholder</span>{<span class="hljs-attribute">text-align</span>: center;}
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>{<span class="hljs-attribute">text-align</span>: center;}
+</code></pre>
+<p>如果是 textarea 也同理：<code>textarea::input-placeholder</code>，同时配合line-height，还能实现文字的垂直居中.</p>

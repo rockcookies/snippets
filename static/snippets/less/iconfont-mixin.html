@@ -1,0 +1,30 @@
+<pre><code class="language-less"><span class="hljs-selector-class">.iconfont-face</span>(<span class="hljs-variable">@font-family</span>, <span class="hljs-variable">@url</span>, <span class="hljs-variable">@version</span>) {
+  <span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'@{font-family}'</span>;
+    <span class="hljs-attribute">src</span>: url(<span class="hljs-string">'@{url}.eot?v=@{timestamp}'</span>);
+    <span class="hljs-attribute">src</span>: url(<span class="hljs-string">'@{url}.eot?#iefix&amp;v=@{timestamp}'</span>) format(<span class="hljs-string">'embedded-opentype'</span>),
+    url(<span class="hljs-string">'@{url}.woff?v=@{timestamp}'</span>) format(<span class="hljs-string">'woff'</span>),
+    url(<span class="hljs-string">'@{url}.ttf?v=@{timestamp}'</span>) format(<span class="hljs-string">'truetype'</span>),
+    url(<span class="hljs-string">'@{url}.svg?v=@{timestamp}#iconfont'</span>) format(<span class="hljs-string">'svg'</span>);
+  }
+}
+
+<span class="hljs-selector-class">.iconfont-mixin</span>(<span class="hljs-variable">@font-family</span>) {
+  <span class="hljs-comment">/* autoprefixer: off */</span>
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">font-style</span>: normal;
+  <span class="hljs-attribute">vertical-align</span>: baseline;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">text-transform</span>: none;
+  <span class="hljs-attribute">text-rendering</span>: auto;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">-webkit-font-smoothing</span>: antialiased;
+  <span class="hljs-attribute">-webkit-text-stroke-width</span>: .<span class="hljs-number">2px</span>;
+  <span class="hljs-attribute">-moz-osx-font-smoothing</span>: grayscale;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">~"@{font-family}"</span> <span class="hljs-meta">!important</span>;
+
+  <span class="hljs-selector-tag">&amp;</span><span class="hljs-selector-pseudo">:before</span> {
+    <span class="hljs-attribute">display</span>: block;
+  }
+}
+</code></pre>

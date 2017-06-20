@@ -1,0 +1,46 @@
+<pre><code class="language-bash">server {
+    server_name www.demo.com;
+    listen 80;
+
+    location / {
+        <span class="hljs-comment"># 配置默认ip</span>
+        <span class="hljs-built_in">set</span> <span class="hljs-variable">$default_ip</span> 127.0.0.1;
+
+        <span class="hljs-comment"># 配置默认port</span>
+        <span class="hljs-built_in">set</span> <span class="hljs-variable">$default_port</span> 8080;
+
+        <span class="hljs-comment"># 如果url中包含ip=x</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$request_uri</span> ~* ip=(.+?)(&amp;|$)) {
+            <span class="hljs-built_in">set</span> <span class="hljs-variable">$default_ip</span> <span class="hljs-variable">$1</span>;
+        }
+
+        <span class="hljs-comment"># 如果url中包含port=1</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$request_uri</span> ~* port=(\d+?)(&amp;|$)) {
+            <span class="hljs-built_in">set</span> <span class="hljs-variable">$default_port</span> <span class="hljs-variable">$1</span>;
+        }
+
+        <span class="hljs-comment"># 配置代理参数</span>
+        proxy_set_header Connection <span class="hljs-string">""</span>;
+        proxy_set_header X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+        proxy_set_header X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+        proxy_set_header Host <span class="hljs-variable">$http_host</span>;
+        proxy_set_header X-NginX-Proxy <span class="hljs-literal">true</span>;
+
+        <span class="hljs-comment"># 代理</span>
+        proxy_pass http://<span class="hljs-variable">$default_ip</span>:<span class="hljs-variable">$default_port</span>;
+    }
+}
+</code></pre>
+<p>使用方式：</p>
+<pre><code class="language-bash"><span class="hljs-comment"># 使用默认值</span>
+www.demo.com
+
+<span class="hljs-comment"># 使用配置ip</span>
+www.demo.com/?ip=127.0.0.1
+
+<span class="hljs-comment"># 使用配置port</span>
+www.demo.com/?port=88
+
+<span class="hljs-comment"># IP+port</span>
+www.demo.com/?port=88&amp;ip=127.0.0.01
+</code></pre>

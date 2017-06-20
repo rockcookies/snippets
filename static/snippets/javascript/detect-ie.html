@@ -1,0 +1,7 @@
+<p>不需要插入 DOM，也可以通过 getElementsByTagName 访问 DOM 的内容。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> isIE = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">var</span> b = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'b'</span>)
+  b.innerHTML = <span class="hljs-string">'&lt;!--[if IE]&gt;&lt;i&gt;&lt;/i&gt;&lt;![endif]--&gt;'</span>
+  <span class="hljs-keyword">return</span> b.getElementsByTagName(<span class="hljs-string">'i'</span>).length === <span class="hljs-number">1</span>
+};
+</code></pre>

@@ -1,0 +1,26 @@
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LightenDarkenColor</span>(<span class="hljs-params">col, amt</span>) </span>{
+  <span class="hljs-keyword">var</span> usePound = <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">if</span> (col[<span class="hljs-number">0</span>] == <span class="hljs-string">"#"</span>) {
+    col = col.slice(<span class="hljs-number">1</span>);
+    usePound = <span class="hljs-literal">true</span>;
+  }
+  <span class="hljs-keyword">var</span> num = <span class="hljs-built_in">parseInt</span>(col,<span class="hljs-number">16</span>);
+  <span class="hljs-keyword">var</span> r = (num &gt;&gt; <span class="hljs-number">16</span>) + amt;
+  <span class="hljs-keyword">if</span> (r &gt; <span class="hljs-number">255</span>) r = <span class="hljs-number">255</span>;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>  (r &lt; <span class="hljs-number">0</span>) r = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">var</span> b = ((num &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0x00FF</span>) + amt;
+  <span class="hljs-keyword">if</span> (b &gt; <span class="hljs-number">255</span>) b = <span class="hljs-number">255</span>;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>  (b &lt; <span class="hljs-number">0</span>) b = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">var</span> g = (num &amp; <span class="hljs-number">0x0000FF</span>) + amt;
+  <span class="hljs-keyword">if</span> (g &gt; <span class="hljs-number">255</span>) g = <span class="hljs-number">255</span>;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (g &lt; <span class="hljs-number">0</span>) g = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">return</span> (usePound?<span class="hljs-string">"#"</span>:<span class="hljs-string">""</span>) + (g | (b &lt;&lt; <span class="hljs-number">8</span>) | (r &lt;&lt; <span class="hljs-number">16</span>)).toString(<span class="hljs-number">16</span>);
+}
+</code></pre>
+<p>使用：</p>
+<pre><code class="language-javascript"><span class="hljs-comment">// Lighten</span>
+<span class="hljs-keyword">var</span> NewColor = LightenDarkenColor(<span class="hljs-string">"#F06D06"</span>, <span class="hljs-number">20</span>);
+
+<span class="hljs-comment">// Darken</span>
+<span class="hljs-keyword">var</span> NewColor = LightenDarkenColor(<span class="hljs-string">"#F06D06"</span>, <span class="hljs-number">-20</span>);
+</code></pre>

@@ -1,0 +1,24 @@
+<h3>使用location匹配</h3>
+<pre><code class="language-bash">server {
+    root /webserver;
+
+    location ~* \.(eot|otf|ttf|woff|svg)$ {
+        add_header Access-Control-Allow-Origin *;
+    }
+}
+</code></pre>
+<h3>使用if判断匹配</h3>
+<pre><code class="language-bash">server {
+    root /webserver;
+
+    location / {
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$document_uri</span> ~ \.(eot|otf|ttf|woff|svg)$) {
+            add_header Access-Control-Allow-Origin *;
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>其中的<code>*</code>指匹配任意域名, 也可以是指定的域名, 如: <code>http://hqyrocks.com</code></li>
+<li><code>eot|otf|ttf|woff|svg</code>表示匹配的字体文件</li>
+</ul>

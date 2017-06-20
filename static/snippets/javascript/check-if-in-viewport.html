@@ -1,0 +1,15 @@
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isInViewport</span>(<span class="hljs-params">el</span>) </span>{
+  <span class="hljs-keyword">var</span> rect = el.getBoundingClientRect();
+
+  <span class="hljs-keyword">return</span> rect.bottom &gt; <span class="hljs-number">0</span> &amp;&amp;
+    rect.right &gt; <span class="hljs-number">0</span> &amp;&amp;
+    rect.left &lt; (<span class="hljs-built_in">window</span>.innerWidth || <span class="hljs-built_in">document</span>. documentElement.clientWidth) &amp;&amp;
+    rect.top &lt; (<span class="hljs-built_in">window</span>.innerHeight || <span class="hljs-built_in">document</span>. documentElement.clientHeight);
+}
+</code></pre>
+<h3>Example Usage:</h3>
+<pre><code class="language-javascript"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'scroll'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  isInViewport(el);
+})
+
+</code></pre>
