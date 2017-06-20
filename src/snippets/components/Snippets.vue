@@ -25,7 +25,7 @@
 			</div>
 		</div>
 
-		<div :class="['codebox-wrapper fn-clear', activeItemVisible && activeItem && 'expand']">
+		<div :class="['codebox-wrapper fn-clear', activeItem && 'expand']">
 			<ul class="typelist">
 				<li
 					v-for="item in (activeCategory && activeCategory.children)"
@@ -81,7 +81,6 @@ export default {
 			snippetsTree: require('../constants/snippets-tree.json'),
 			activeCategory: null,
 			activeItem: null,
-			activeItemVisible: true,
 			activeContent: 'loading',
 			searchVisible: false,
 			searchValue: '',
@@ -90,12 +89,6 @@ export default {
 	},
 	created() {
 		this.fetchData();
-	},
-	filters: {
-		highlight(words, query) {
-			const iQuery = new RegExp(query, 'ig');
-			return words.toString().replace(iQuery, (matchedTxt) => `<font class="highlight">${matchedTxt}</font>`);
-		}
 	},
 	watch: {
 		$route: 'fetchData',
@@ -142,25 +135,28 @@ export default {
 		},
 
 		handleContentClose() {
-			this.activeItemVisible = false;
+			this.activeItem = null;
 		},
 		handleCategoryFocused(category) {
 			// 已经被聚焦
 			if (this.activeCategory === category) {
 				return;
 			}
-
 			this.activeCategory = category;
-			this.activeItemVisible = false;
+			this.activeItem = null;
 		},
 		handleItemFocused(item) {
 			// 已经被聚焦
 			if (this.activeItem === item) {
-				this.activeItemVisible = true;
 				return;
 			}
 
-			router.push(item.url);
+			// 如果 URL 一样
+			if (this.$route.path === item.url) {
+				this.activeItem = item;
+			} else {
+				router.push(item.url);
+			}
 		},
 		fetchData() {
 			const snippetsTree = this.snippetsTree;
@@ -179,14 +175,11 @@ export default {
 			this.activeCategory = findCategory(snippetsTree, (i) => (i.category === item.category));
 
 			if (snippetsCache[url]) {
-				this.activeItemVisible = true;
 				this.activeContent = snippetsCache[url];
 				return;
 			}
 
 			axios.get(`./static/snippets${url}`).then(resp => {
-				this.activeItemVisible = true;
-
 				snippetsCache[url] = resp.data;
 
 				if (this.activeItem === item) {
